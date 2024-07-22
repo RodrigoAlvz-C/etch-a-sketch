@@ -2,10 +2,22 @@ const gridContainer = document.getElementById("grid-container");
 const cells = document.querySelectorAll('.cell')
 const tools = document.querySelectorAll('.tool')
 const btnClear = document.getElementById('clear')
+const colorPicker = document.getElementById('color-picker')
+const sizePicker = document.getElementById('size-picker')
+const sizeText = document.getElementById('size-text')
 
+
+let size = 16
 let tool = 'pencil'
 let color = 'black'
 let opacity = 0.0
+
+sizePicker.addEventListener('input', (e) => {
+  size = Number(e.target.value)
+  updateGrid(gridContainer, size)
+  sizeText.textContent = `${size}x${size}`
+  opacity = 0.0
+})
 
 const generateGrid = (size) => {
   const itemSize = `calc(100% / ${size})`;
@@ -77,5 +89,10 @@ tools.forEach(toolElement => {
 
 btnClear.addEventListener('click', () => clear())
 
-generateGrid(32);
+colorPicker.addEventListener('input', (e) => {
+  color = e.target.value
+  opacity = 0.0
+})
+
+generateGrid(size);
 attachEventListeners()
