@@ -3,6 +3,7 @@ const cells = document.querySelectorAll('.cell')
 const tools = document.querySelectorAll('.tool')
 const btnClear = document.getElementById('clear')
 const colorPicker = document.getElementById('color-picker')
+const colorDisplay = document.getElementById('color-display')
 const sizePicker = document.getElementById('size-picker')
 const sizeText = document.getElementById('size-text')
 
@@ -92,7 +93,10 @@ btnClear.addEventListener('click', () => clear())
 colorPicker.addEventListener('input', (e) => {
   color = e.target.value
   opacity = 0.0
+  colorDisplay.style.backgroundColor = color
 })
 
+
+colorDisplay.style.backgroundColor = color
 generateGrid(size);
 attachEventListeners()
